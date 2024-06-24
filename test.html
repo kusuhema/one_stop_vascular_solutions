@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="newItem" placeholder="New item">
+    <button id="addButton">Add</button>
+    <ul id="todoList"></ul>
+
+    <script>
+        document.getElementById('addButton').addEventListener('click', function() {
+            let newItemText = document.getElementById('newItem').value;
+            if (newItemText !== '') {
+                let newItem = document.createElement('li');
+                newItem.textContent = newItemText;
+
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', function() {
+                    newItem.remove();
+                });
+
+                newItem.appendChild(deleteButton);
+                document.getElementById('todoList').appendChild(newItem);
+
+                document.getElementById('newItem').value = ''; // Clear the input
+            }
+        });
+    </script>
+</body>
+</html>
